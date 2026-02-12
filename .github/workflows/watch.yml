@@ -2,7 +2,7 @@ name: Check NHMPE Tickets
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # 5分ごと
+    - cron: "*/5 * * * *"   # every five mins
   workflow_dispatch:
 
 jobs:
