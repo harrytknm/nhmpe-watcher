@@ -24,4 +24,3 @@ jobs:
 
       - name: Run check
         run: python watch.py
-# force refresh
