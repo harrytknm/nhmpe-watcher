@@ -1,0 +1,26 @@
+name: Check NHMPE Tickets
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # 10分ごと
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install playwright==1.41.2 requests==2.32.5
+
+      - name: Install Chromium
+        run: python -m playwright install chromium
+
+      - name: Run check
+        run: python watch.py
