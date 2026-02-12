@@ -11,10 +11,12 @@ NTFY_URL = f"https://ntfy.sh/{NTFY_TOPIC}"
 DAY_RE = re.compile(r"^(?:[1-9]|[12]\d|3[01])$")
 
 def push(title: str, message: str):
+    # ヘッダは英数字だけにする（日本語は本文に入れる）
+    safe_title = "NHMPE Watcher"
     requests.post(
         NTFY_URL,
         data=message.encode("utf-8"),
-        headers={"Title": title},
+        headers={"Title": safe_title},
         timeout=10,
     )
 
@@ -80,5 +82,5 @@ def main():
         push("NHMPE: 空き検知", msg)
 
 if __name__ == "__main__":
-    push("テスト", "GitHub Actionsからのテスト通知")
+    push("test", "Test notification from GitHub Actions")
     main()
