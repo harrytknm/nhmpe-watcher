@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 URL = "https://nhmpe.seetickets.com/timeslot/nhmpe"
 
 # ここはあなたの ntfy トピック名
-NTFY_TOPIC = "nhmpe-あなたのトピック"
+NTFY_TOPIC = "nhmpe-7392kx81"
 NTFY_URL = f"https://ntfy.sh/{NTFY_TOPIC}"
 
 DAY_RE = re.compile(r"^(?:[1-9]|[12]\d|3[01])$")
@@ -80,4 +80,5 @@ def main():
         push("NHMPE: 空き検知", msg)
 
 if __name__ == "__main__":
+    push("テスト", "GitHub Actionsからのテスト通知")
     main()
